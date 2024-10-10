@@ -1,0 +1,30 @@
+<div class="form-area">
+  <input type="text" placeholder="Name" [(ngModel)]="name">
+  <br><br>
+  <input type="text" placeholder="email" [(ngModel)]="email">
+  <br><br>
+  <textarea placeholder="address" [(ngModel)]="address"></textarea>
+  <br><br>
+  <button (click)="saveData()" >Save data</button>
+
+</div>
+<div class="preview-area" *ngIf="userDetails.length > 0 else nodata">
+  <table border="0">
+    <thead>
+      <th>#</th>
+      <th>name</th>
+      <th>email</th>
+      <th>address</th>
+      <th>action</th>
+    </thead>
+    <tr *ngFor="let u of userDetails; let i = index; trackby: onTrackBy(index)">
+      <td>{{i+1}}</td>
+      <td>{{ u.name }}</td>
+      <td>{{ u.email }}</td>
+      <td>{{ u.address }}</td>
+
+      <td><button (click)="removeItem(i)">X</button></td>
+    </tr>
+  </table>
+</div>
+<ng-template #nodata>No data</ng-template>

@@ -1,0 +1,12 @@
+<button (click)="onClick('div1')">div 1</button>
+<button (click)="onClick('div2')">div 2</button>
+<button (click)="onClick('div3')">div 3</button>
+<div [ngSwitch]="divValue">
+  <div *ngSwitchCase="'div1'">div 1</div>
+  <div *ngSwitchCase="'div2'">div 2</div>
+  <div *ngSwitchCase="'div3'">div 3</div>
+  <div *ngSwitchDefault>default</div>
+</div>
+
+<p [ngClass]="{ class1: applyClass1, class2: applyClass2}">Nandha</p>
+<p [ngStyle]="{color: applyClass1 ? 'red': '', 'text-transform': applyClass2 ? 'uppercase' : ''}">ngStyle</p>

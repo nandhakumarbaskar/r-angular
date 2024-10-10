@@ -1,0 +1,58 @@
+<h2>Template driven form</h2>
+<form #f="ngForm" (ngSubmit)="onSubmit(f)">
+  <input type="text" placeholder="fullName" name="fullName" ngModel #fullName="ngModel" (change)="onChange(fullName)" required minlength="5">
+  <div *ngIf="fullName.touched && fullName.invalid">
+    <div *ngIf="fullName.errors?.['required']">required</div>
+    <div *ngIf="fullName.errors?.['minlength']">minlength</div>
+  </div>
+  <br><br>
+  <input type="text" placeholder="email" name="email" ngModel #email="ngModel" required pattern="[a-z0-9._%+\-]+@[a-z0-9.\-]+\.[a-z]{2,}$">
+  <div *ngIf="email.touched && email.invalid">
+    <div *ngIf="email.errors?.['required']">required</div>
+    <div *ngIf="email.errors?.['pattern']">pattern</div>
+  </div>
+  <br><br>
+  <textarea placeholder="address" name="address" ngModel #address="ngModel" required></textarea>
+  <div *ngIf="address.touched && address.invalid">required</div>
+  <br><br>
+<button type="submit" [disabled]="f.invalid">Submit</button>
+</form>
+
+
+<h2>Reactive form</h2>
+<form [formGroup]="form" (ngSubmit)="onReactiveSubmit()">
+  <input type="text" placeholder="fullName" formControlName="fullName">
+  <div *ngIf="FullName.touched && FullName.invalid">
+    <div *ngIf="FullName.errors?.['required']">required</div>
+    <div *ngIf="FullName.errors?.['minlength']">minlength</div>
+  </div>
+  <br><br>
+  <input type="text" placeholder="email" formControlName="email">
+  <div *ngIf="Email.touched && Email.invalid">
+    <div *ngIf="Email.errors?.['required']">required</div>
+    <div *ngIf="Email.errors?.['pattern']">pattern</div>
+  </div>
+  <br><br>
+
+  <div formGroupName="contactDetails">
+    <textarea placeholder="address" formControlName="address"></textarea>
+  <div *ngIf="Address.touched && Address.invalid">required</div>
+  <br><br>
+  <textarea placeholder="shippingAddress" formControlName="shippingAddress"></textarea>
+  <div *ngIf="ShippingAddress.touched && ShippingAddress.invalid">required</div>
+  <br><br>
+  <input type="text" placeholder="contactno" formControlName="contactno">
+  <div *ngIf="ContactNo.touched && ContactNo.invalid">
+    <div *ngIf="ContactNo.errors?.['required']">required</div>
+    <div *ngIf="ContactNo.errors?.['pattern']">pattern</div>
+  </div>
+
+  </div>
+  <br><br>
+  <input type="text" placeholder="skills" formControlName="skill" (keyup.enter)="addSkills(skill)" #skill>
+  <ul *ngFor="let s of Skills.controls; let i = index">
+    <li >{{s.value}} <button (click)="removeItem(i)" type="button">x</button></li>
+  </ul>
+  <br><br>
+<button type="submit" [disabled]="form.invalid">Submit</button>
+</form>

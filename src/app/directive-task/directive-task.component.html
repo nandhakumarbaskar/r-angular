@@ -1,0 +1,18 @@
+<div class="form-area">
+  <input type="text" placeholder="post title" [(ngModel)]="title">
+  <br><br>
+  <textarea [(ngModel)]="description" placeholder="description"></textarea>
+  <br><br>
+  <input type="text" placeholder="post image url" [(ngModel)]="imgUrl">
+  <br><br>
+  <input type="text" placeholder="post url" [(ngModel)]="postUrl">
+  <br><br>
+  <input type="checkbox" placeholder="add checkbox" [(ngModel)]="backgroundCheck">Add background
+</div>
+
+<div class="form-preview">
+  <p [class.backgroud]="backgroundCheck">{{title}}</p>
+  <p>{{description}}</p>
+  <p><img [src]="imgUrl" alt=""></p>
+  <p><a [href]="postUrl" [style.display]="postUrl ? 'block': 'none'">read more...</a></p>
+</div>

@@ -1,0 +1,23 @@
+<p>directive-practice works!</p>
+<!-- string interpulation -->
+<p>{{title}}</p>
+<!-- property binding -->
+<img [src]="imgUrl" alt="">
+<!-- style binding -->
+<p [style.color]="applyStyle ? 'red' : 'pink'">Style binind</p>
+<!-- class binding -->
+<p [class.p-class]="applyClass">Class binding</p>
+
+<!-- event binding -->
+ <!-- event filtering -->
+  <input type="text" (keyup)="onKeyup($event)" placeholder="event filtering">
+  <br><br>
+  <input type="text" (keyup.enter)="onKeyupEnter(username)" placeholder="event filtering" #username>
+  <br><br>
+  <input type="text" (keyup.enter)="onKeyupEnterEvent($event)" placeholder="event filtering">
+
+  <br><br>
+  <!-- Two way data binding -->
+   <input type="text" placeholder="userName" [(ngModel)]="userName">
+   <p>{{userName}}</p>
+

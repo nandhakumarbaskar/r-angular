@@ -1,0 +1,5 @@
+<p>parent works!</p>
+<app-child [fromParentMessage]="parentMessage" (eventMessage)="receiveMessage($event)"></app-child>
+<app-another-child [fromAnotherParentMessage]="anotherParentMessage"></app-another-child>
+<p>{{formChildMessage}}</p>
+<p>{{outputChildMessage}}</p>
